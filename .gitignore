@@ -1,0 +1,7 @@
+.settings/
+build/
+/
+.classpath
+.project
+src/main/webapp/META-INF/MANIFEST.MF
+src/main/webapp/WEB-INF/web.xml
