@@ -38,6 +38,10 @@
 	
 	<div class="container">
 		<div class="row">
+			<div class="col-md-5">
+				<img src="./images/<%=product.getImagePath() %>">
+			</div>
+		
 			<div class="col-md-6">
 				<!-- 상품의 상세 정보를 보여주는 영역 -->
 				<h3><%=product.getName()%></h3>

@@ -13,6 +13,7 @@ public class Product implements Serializable {
 	private String category; // 분류
 	private long unitsInStock; // 재고 수
 	private String condition; // 신상품 or 중고품 or 재생품
+	private String imagePath; // 이미지 파일 경로
 	
 	public Product(String productId, String name, int unitPrice) {
 		setProductId(productId);
@@ -20,7 +21,8 @@ public class Product implements Serializable {
 		setUnitPrice(unitPrice);
 	}
 	
-	public Product(String productId, String name, String unitPrice, String description, String manufacturer, String category, String unitsInStock, String condition) {
+	public Product(String productId, String name, String unitPrice, String description, String manufacturer,
+			String category, String unitsInStock, String condition, String imagePath) {
 		this.productId = productId;
 		this.name = name;
 		this.unitPrice = Integer.parseInt(unitPrice);
@@ -29,6 +31,7 @@ public class Product implements Serializable {
 		this.category = category;
 		this.unitsInStock = Integer.parseInt(unitsInStock);
 		this.condition = condition;
+		this.imagePath = imagePath;
 	}
 
 	public String getProductId() {
@@ -93,5 +96,13 @@ public class Product implements Serializable {
 
 	public void setCondition(String condition) {
 		this.condition = condition;
+	}
+
+	public String getImagePath() {
+		return imagePath;
+	}
+
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
 	}
 }
