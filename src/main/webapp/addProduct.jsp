@@ -15,6 +15,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	<script type = "text/javascript" src="/WebMarket/js/validation.js"></script>
 </head>
 <body>
 	<jsp:include page="header.jsp" />
@@ -26,25 +27,25 @@
 	</div>
 	
 	<div class="container">
-		<form action="<%= PRODUCT_ADD_PROCESS_PAGE_URL %>" class="form-horizontal" method="POST" enctype="multipart/form-data">
+		<form action="<%= PRODUCT_ADD_PROCESS_PAGE_URL %>" name="newProduct" class="form-horizontal" method="POST" enctype="multipart/form-data">
 			<div class="form-group row">
 				<label class="col-sm-2">상품 코드</label>
 				<div class="col-sm-3">
-					<input type="text" name="productId" class="form-control" maxlength="5" size="5">
+					<input type="text" name="productId" id="productId" class="form-control" maxlength="5" size="5">
 				</div>
 			</div>
 		
 			<div class="form-group row">
 				<label class="col-sm-2">상품명</label>
 				<div class="col-sm-3">
-					<input type="text" name="name" class="form-control" maxlength="255" size="255">
+					<input type="text" name="name" id = "name" class="form-control" maxlength="255" size="255">
 				</div>
 			</div>
 			
 			<div class="form-group row">
 				<label class="col-sm-2">가격</label>
 				<div class="col-sm-3">
-					 <input type="number" name="unitPrice" class="form-control" min="0" max="10000000">
+					 <input type="number" name="unitPrice" id = "unitPrice" class="form-control" min="0" max="10000000">
 				</div>
 			</div>
 			
@@ -72,7 +73,7 @@
 			<div class="form-group row">
 				<label class="col-sm-2">재고 수</label>
 				<div class="col-sm-3">
-					<input type="range" name="unitsInStock" class="form-control">
+					<input type="range" name="unitsInStock" id="unitsInStock" class="form-control">
 				</div>
 			</div>
 			
@@ -93,7 +94,7 @@
 				
 			<div class="form-group row">
 				<div class="col-sm-offset-2 col-sm-10">
-					<input type="submit" class="btn btn-primary" value="등록">
+					<input type="submit" class="btn btn-primary" value="등록" onclick ="checkAddProduct()">
 					<input type="reset" class="btn btn-danger" value="초기화">
 				</div>
 			</div>

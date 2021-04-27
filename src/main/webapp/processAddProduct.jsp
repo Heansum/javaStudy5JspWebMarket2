@@ -22,23 +22,21 @@
 	
 	MultipartRequest multi = new MultipartRequest(request, realFolder, maxSize, encType, new DefaultFileRenamePolicy());
 	
-	String productId = request.getParameter("productId");
-	String name = request.getParameter("name");
-	String unitPrice = request.getParameter("unitPrice");
-	String description = request.getParameter("description");
-	String manufacturer = request.getParameter("manufacturer");
-	String category = request.getParameter("category");
-	String unitsInStock = request.getParameter("unitsInStock");
-	String conditon = request.getParameter("condition");
+	String productId = multi.getParameter("productId");
+	String name = multi.getParameter("name");
+	String unitPrice = multi.getParameter("unitPrice");
+	String description = multi.getParameter("description");
+	String manufacturer = multi.getParameter("manufacturer");
+	String category = multi.getParameter("category");
+	String unitsInStock = multi.getParameter("unitsInStock");
+	String conditon = multi.getParameter("condition");
 	
 	Enumeration files = multi.getFileNames();
 	String fileName = (String) files.nextElement();
 	fileName = multi.getFilesystemName(fileName);
 	
-	Product product = new Product(
-			productId, name, unitPrice, description, manufacturer,
-			category, unitsInStock, conditon, fileName
-		);
+	Product product = new Product(productId, name, unitPrice, description, manufacturer
+			,category, unitsInStock, conditon, fileName);
 	
 	// 상품 정보 저장
 	// ProductRepository 객체의 생성을 제한 (싱글턴 패턴)
