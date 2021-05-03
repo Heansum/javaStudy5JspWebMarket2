@@ -14,6 +14,8 @@ public class Product implements Serializable {
 	private long unitsInStock; // 재고 수
 	private String condition; // 신상품 or 중고품 or 재생품
 	private String imagePath; // 이미지 파일 경로
+	private int quantity;	// 장바구니에 담은 개수
+	
 	
 	public Product(String productId, String name, int unitPrice) {
 		setProductId(productId);
@@ -104,5 +106,13 @@ public class Product implements Serializable {
 
 	public void setImagePath(String imagePath) {
 		this.imagePath = imagePath;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 }
