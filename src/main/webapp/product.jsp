@@ -57,7 +57,7 @@
 				<h4><%=product.getUnitPrice() %>(원)</h4>
 				<p>
 					<a href="#" class="btn btn-info" onclick="addToCart()">상품 주문 &raquo;</a>
-					<a href="<%= ADD_TO_CART_PROCESS_URL %>?productId=<%=productId %>" class="btn btn-warning">장바구니 &raquo;</a>
+					<a href="#" class="btn btn-warning" onclick="addToCart()">장바구니 &raquo;</a>
 					<a href="<%= PRODUCTS_PAGE_URL %>" class="btn btn-secndary">상품 목록 &raquo;</a>
 				</p>
 			</div>
@@ -68,18 +68,41 @@
 	<jsp:include page="footer.jsp" />
 	
 	<script>
+		// 사용자가 이 페이지로 접근하기 위해 주소표시줄에 입력한 프로토콜 명
+		// http 또는 https
+		var protocol = location.protocol;
+		// 사용자가 이 페이지로 접근하기 위해 주소 표시줄에 입력한 도메인 명
+		var domain = location.hostname;
+		// 사용자가 이 페이지로 접근하기 위해 주소 표시줄에 입력한 포트 번호
+		// 단, 포트번호는 없을 수 있음 / 포트번호가 없다는건 프로토콜의 기본 포트 번호를 사용했다는 것
+		// 기본 포트 번호 - http의 경우 80번이 기본 포트 번호 / https의 경우 443번이 기본 포트 번호
+		var port = location.port;
+		
+		// http://192.168.2.101:8081
+		// http://localhost:8081
+		// http://127.0.0.1:8081
+		
+		var THIS_SITE_FULL_DOMAIN = protocol + "//" + domain;
+		if(port.length != 0){
+			// 포트 번호를 입력하고 이 페이지에 접근했다면
+			THIS_SITE_FULL_DOMAIN += (":" + port);
+		}
+		
 		var productId = "<%=productId %>";
+		var CART_PAGE_URL = "<%=CART_PAGE_URL%>";
 		
 		function addToCart(){
 			if(confirm("상품을 장바구니에 추가하시겠습니까?")){
 				// 상품을 장바구니에 추가하는 코드
 				jQuery.ajax({
-					url: "http://192.168.2.30:8081/WebMarket/cart/add",
-					data: "productId= "+productId,
+					url: THIS_SITE_FULL_DOMAIN+"/WebMarket/cart/add",
+					data: "productId="+productId,
 					success: function() {
 						var isMove = confirm("해당 상품을 장바구니에 추가했습니다. \n[장바구니로 이동하시겠습니까?]");
 						if(isMove){
 							alert("장바구니로 이동합니다.");
+						
+							location.href = CART_PAGE_URL;
 						} 
 					},
 					error: function(){
