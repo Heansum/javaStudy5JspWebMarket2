@@ -35,6 +35,19 @@ public class Product implements Serializable {
 		this.condition = condition;
 		this.imagePath = imagePath;
 	}
+	
+	public Product(String productId, String name, int unitPrice, String description, String manufacturer,
+			String category, int unitsInStock, String condition, String imagePath) {
+		this.productId = productId;
+		this.name = name;
+		this.unitPrice = unitPrice;
+		this.description = description;
+		this.manufacturer = manufacturer;
+		this.category = category;
+		this.unitsInStock = unitsInStock;
+		this.condition = condition;
+		this.imagePath = imagePath;
+	}
 
 	public String getProductId() {
 		return productId;
